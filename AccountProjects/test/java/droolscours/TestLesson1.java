@@ -42,6 +42,7 @@ public class TestLesson1 {
 	
 	@Test
 	public void testFirstOne() {
+		System.out.println(new Exception().getStackTrace()[0].getMethodName());  // print current method name to console
 		sessionStateful = KnowledgeSessionHelper.getStatefulKnowledgeSession(kieContainer, "ksession-rules");
 		OutputDisplay outputDisplay = new OutputDisplay();
 		sessionStateful.setGlobal("showResults", outputDisplay);
@@ -52,6 +53,7 @@ public class TestLesson1 {
 
 	@Test
 	public void testRuleOneFactWithFactAndUsageOfGlobalAndCallback() {
+		System.out.println(new Exception().getStackTrace()[0].getMethodName());  // print current method name to console
 		sessionStateful = KnowledgeSessionHelper
 				.getStatefulKnowledgeSession(kieContainer, "ksession-rules");
 		sessionStateful.addEventListener(new RuleRuntimeEventListener() {
@@ -82,6 +84,7 @@ public class TestLesson1 {
 	
 	@Test
 	public void testFirstOneTwoFireAllRules() {
+		System.out.println(new Exception().getStackTrace()[0].getMethodName());  // print current method name to console
 		sessionStateful = KnowledgeSessionHelper.getStatefulKnowledgeSession(kieContainer, "ksession-rules");
 		OutputDisplay outputDisplay = new OutputDisplay();
 		sessionStateful.setGlobal("showResults", outputDisplay);
@@ -123,6 +126,37 @@ public class TestLesson1 {
 		sessionStateful.fireAllRules();
 		sessionStateful.update(handle, a);
 		System.out.println("Second fire all rules");
+		sessionStateful.fireAllRules();
+	}
+	
+	@Test
+	public void testRuleOneFactWithFactThatInsertObject() {
+		System.out.println(new Exception().getStackTrace()[0].getMethodName());  // print current method name to console
+		
+		sessionStateful = KnowledgeSessionHelper
+				.getStatefulKnowledgeSession(kieContainer, "ksession-rules");
+		
+		OutputDisplay display = new OutputDisplay();
+		sessionStateful.setGlobal("showResults", display);
+		
+		sessionStateful.addEventListener(new RuleRuntimeEventListener() {
+			public void objectInserted(ObjectInsertedEvent event) {
+				System.out.println("Object inserted \n"
+						+ event.getObject().toString());
+			}
+			
+			public void objectUpdated(ObjectUpdatedEvent event) {
+				System.out.println("Object was updated \n"
+						+ "new content \n" + event.getObject().toString());
+			}
+			
+			public void objectDeleted(ObjectDeletedEvent event) {
+				System.out.println("Object retracted \n"
+						+ event.getOldObject().toString());
+			}
+		});
+		CashFlow a = new CashFlow();
+		FactHandle handlea = sessionStateful.insert(a);
 		sessionStateful.fireAllRules();
 	}
 }
