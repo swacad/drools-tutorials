@@ -73,7 +73,7 @@ public class TestLesson1 {
 			}
 		});
 		Account a = new Account();
-		a.setAccountno(10);
+		a.setAccountNo(10);
 		FactHandle handlea = sessionStateful.insert(a);  // Memorize the fact handle
 		a.setBalance(12.0);  // Set the balance
 		sessionStateful.update(handlea, a);  // Update fact handle
@@ -107,7 +107,7 @@ public class TestLesson1 {
 		sessionStateful.insert(a);
 		System.out.println("First fire all rules");
 		sessionStateful.fireAllRules();
-		a.setAccountno(1);
+		a.setAccountNo(1);
 		System.out.println("Second fire all rules");
 		sessionStateful.fireAllRules();
 	}

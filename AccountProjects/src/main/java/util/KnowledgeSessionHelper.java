@@ -65,7 +65,7 @@ public class KnowledgeSessionHelper {
             public void matchCancelled(MatchCancelledEvent event) {
                 System.out.println("The rule "
                         + event.getMatch().getRule().getName()
-                        + " cannot b in agenda");
+                        + " cannot be in agenda");
             }
             public void beforeMatchFired(BeforeMatchFiredEvent event) {
                 System.out.println("The rule "
@@ -75,7 +75,7 @@ public class KnowledgeSessionHelper {
             public void afterMatchFired(AfterMatchFiredEvent event) {
                 System.out.println("The rule "
                         + event.getMatch().getRule().getName()
-                        + " has be fired");
+                        + " has been fired");
             }
             public void agendaGroupPopped(AgendaGroupPoppedEvent event) {
             }

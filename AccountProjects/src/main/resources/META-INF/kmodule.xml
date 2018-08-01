@@ -3,4 +3,7 @@
     <kbase name="rules" packages="lesson1">
         <ksession name="ksession-rules"/>
     </kbase>
+     <kbase name="rules2" packages="lesson2">
+        <ksession name="ksession-lesson2"/>
+    </kbase>
 </kmodule>

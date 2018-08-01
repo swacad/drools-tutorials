@@ -3,10 +3,10 @@ package droolscours;
 public class Account {
 	private long accountno;
 	private double balance;
-	public long getAccountno() {
+	public long getAccountNo() {
 		return accountno;
 	}
-	public void setAccountno(long accountno) {
+	public void setAccountNo(long accountno) {
 		this.accountno = accountno;
 	}
 	public double getBalance() {
