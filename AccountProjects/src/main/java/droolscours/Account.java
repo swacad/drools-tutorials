@@ -1,8 +1,22 @@
 package droolscours;
 
 public class Account {
+	
 	private long accountno;
 	private double balance;
+	
+	public Account() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public Account(long accountno, double balance) {
+		super();
+		this.accountno = accountno;
+		this.balance = balance;
+	}
+
 	public long getAccountNo() {
 		return accountno;
 	}

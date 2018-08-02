@@ -10,6 +10,18 @@ public class CashFlow {
 	private double amount;
 	private int type;
 	private long accountNo;
+	
+    public CashFlow() {
+        super();
+    }
+    public CashFlow(Date mvtDate, double amount, int type, long accountNo) {
+        super();
+        this.mvtDate = mvtDate;
+        this.amount = amount;
+        this.type = type;
+        this.accountNo = accountNo;
+    }
+	
 	public Date getMvtDate() {
 		return mvtDate;
 	}
@@ -49,7 +61,7 @@ public class CashFlow {
             buff.append("No Movement date was set\n");
         }
         buff.append("Movement Amount = " + this.amount + "\n");
-        buff.append("-----CashFlow end--)");
+        buff.append("-----CashFlow end--)\n");
         return buff.toString();
 	}
 }
