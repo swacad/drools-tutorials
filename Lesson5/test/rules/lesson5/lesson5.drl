@@ -1,0 +1,23 @@
+//created on: Aug 2, 2018
+package course
+
+
+//list any import classes here.
+import course.Order
+import course.Product
+import course.Trip
+import util.OutputDisplay;
+
+
+//declare any global variables here
+global OutputDisplay showResult;
+
+
+rule "Test rule"
+    when
+        //conditions
+        Order()
+    then
+        //actions
+		showResult.showText("Test rule fired");
+end
