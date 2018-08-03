@@ -34,7 +34,6 @@ public class TestLesson3 {
         System.out.println("------------After------------");
     }
 
-    /*
     @Test
     public void testInConstraint() throws Exception {
     	System.out.println(new Exception().getStackTrace()[0].getMethodName());  // print current method name to console
@@ -212,7 +211,6 @@ public class TestLesson3 {
                 .insert(new AccountingPeriod(DateHelper.getDate("2010-01-01"), DateHelper.getDate("2010-31-31")));
         sessionStatefull.fireAllRules();
     }
-    */
     
     @Test
     public void testAccumulate() throws Exception {

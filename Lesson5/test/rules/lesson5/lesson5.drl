@@ -13,11 +13,33 @@ import util.OutputDisplay;
 global OutputDisplay showResult;
 
 
-rule "Test rule"
+rule "Trip exists"
     when
-        //conditions
-        Order()
+        Trip()
     then
         //actions
-		showResult.showText("Test rule fired");
+		showResult.showText("Trip exists");
 end
+
+
+rule "Order exists"
+    when
+        //conditions
+        $order : Order( startCity not null && )
+    then
+        //actions
+		showResult.showText("Order exists");
+end
+
+
+
+
+
+
+
+
+
+
+
+
+

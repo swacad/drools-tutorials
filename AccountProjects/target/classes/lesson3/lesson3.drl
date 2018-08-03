@@ -11,7 +11,7 @@ import java.util.ArrayList;
 global OutputDisplay showResult;
 global CustomerService serviceCustomer;
 
-/*
+
 rule "The cashFlow can be a credit or a debit"
 
     when
@@ -103,7 +103,7 @@ rule "Numbers of CashFlow Line"
     then
         showResult.showText("Found \n" + $cashflowlist +" more than 2 CashFlow Lines");
 end
-*/
+
 
 rule "Credit and Debit Rule"
     when

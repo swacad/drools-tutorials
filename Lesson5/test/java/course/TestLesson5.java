@@ -43,5 +43,17 @@ public class TestLesson5 {
 		sessionStateful.insert(a);
 		sessionStateful.fireAllRules();
 	}
+	
+	@Test
+	public void testTrip() {
+		System.out.println(new Exception().getStackTrace()[0].getMethodName());  // print current method name to console
+		sessionStateful = KnowledgeSessionHelper.getStatefulKnowledgeSession(kieContainer, "ksession-rules");
+		OutputDisplay outputDisplay = new OutputDisplay();
+		sessionStateful.setGlobal("showResult", outputDisplay);
+		
+		Trip t = new Trip();
+		sessionStateful.insert(t);
+		sessionStateful.fireAllRules();
+	}
 
 }
