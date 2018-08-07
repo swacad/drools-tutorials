@@ -1,29 +1,17 @@
 package course;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Order {
-	private Product product;
-	private int quantity;
-	
-	
-	public Order() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
+	private List<OrderLine> orderLines = new ArrayList<OrderLine>();
 
-	public Product getProduct() {
-		return product;
-	}
-	public void setProduct(Product product) {
-		this.product = product;
+	public List<OrderLine> getOrderLines() {
+		return orderLines;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setOrderLines(List<OrderLine> orderLines) {
+		this.orderLines = orderLines;
 	}
 	
 }

@@ -2,6 +2,9 @@ package course;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import util.KnowledgeSessionHelper;
 import util.OutputDisplay;
 
@@ -45,14 +48,36 @@ public class TestLesson5 {
 	}
 	
 	@Test
-	public void testTrip() {
+	public void testStep() {
 		System.out.println(new Exception().getStackTrace()[0].getMethodName());  // print current method name to console
 		sessionStateful = KnowledgeSessionHelper.getStatefulKnowledgeSession(kieContainer, "ksession-rules");
 		OutputDisplay outputDisplay = new OutputDisplay();
 		sessionStateful.setGlobal("showResult", outputDisplay);
 		
-		Trip t = new Trip();
-		sessionStateful.insert(t);
+		Step step = new Step(1, "Shanghai", "Rotterdam", 22000, "boat");
+		sessionStateful.insert(step);
+		sessionStateful.fireAllRules();
+	}
+	
+	@Test
+	public void testTrip() {
+		System.out.println(new Exception().getStackTrace()[0].getMethodName());  // print current method name to console
+		sessionStateful = KnowledgeSessionHelper.getStatefulKnowledgeSessionWithCallback(kieContainer, "ksession-rules");
+		OutputDisplay outputDisplay = new OutputDisplay();
+		sessionStateful.setGlobal("showResult", outputDisplay);
+		
+		Step s1 = new Step(1, "Shanghai", "Rotterdam", 22000, "boat");
+		Step s2 = new Step(2, "Rotterdam", "Tournai", 300, "train");
+		Step s3 = new Step(3, "Tournai", "Lille", 20, "truck");
+		
+		Trip trip = new Trip();
+		ArrayList<Step> steps = new ArrayList<Step>();
+		steps.add(s1);
+		steps.add(s2);
+		steps.add(s3);
+		trip.setSteps(steps);
+		
+		sessionStateful.insert(trip);
 		sessionStateful.fireAllRules();
 	}
 

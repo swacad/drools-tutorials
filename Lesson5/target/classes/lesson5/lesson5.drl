@@ -4,8 +4,11 @@ package course
 
 //list any import classes here.
 import course.Order
+import course.OrderLine
 import course.Product
+import course.Step
 import course.Trip
+
 import util.OutputDisplay;
 
 
@@ -13,23 +16,22 @@ import util.OutputDisplay;
 global OutputDisplay showResult;
 
 
-rule "Trip exists"
+rule "Step has start and end cities"
     when
-        Trip()
+        $step : Step( startCity != null, arrivalCity != null)
     then
         //actions
-		showResult.showText("Trip exists");
+		showResult.showText("Step has start and end cities");
+end
+
+rule "Trip has steps"
+	when
+		$trip : Trip( steps.size > 0 )
+	then
+		showResult.showText("Trip has steps!");
 end
 
 
-rule "Order exists"
-    when
-        //conditions
-        $order : Order( startCity not null && )
-    then
-        //actions
-		showResult.showText("Order exists");
-end
 
 
 
